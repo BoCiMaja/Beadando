@@ -10,22 +10,22 @@
 				'category' => $_POST['category'],
 				'calorie' => $_POST['calorie'],
 				'ingredients' => $_POST['ingredients'],
-				'leiras' => $_POST['leiras']
+				'directions' => $_POST['directions']
 			];
 
 
 
-			if(empty($postData['dish_name']) || empty($postData['difficulty']) || empty($postData['category']) || empty($postData['calorie']) || empty($postData['ingredients']) || empty($postData['leiras'])){
+			if(empty($postData['dish_name']) || empty($postData['difficulty']) || empty($postData['category']) || empty($postData['calorie']) || empty($postData['ingredients']) || empty($postData['directions'])){
 				echo "Hiányzó adat(ok)";
 			} else {
-				$query = "INSERT INTO recipes (dish_name, difficulty, category, calorie, ingredients, leiras) VALUES (:dish_name, :difficulty, :category, :calorie, :ingredients, :leiras)";
+				$query = "INSERT INTO recipes (dish_name, difficulty, category, calorie, ingredients, directions) VALUES (:dish_name, :difficulty, :category, :calorie, :ingredients, :directions)";
 				$params = [
 					':dish_name' => $postData['dish_name'],
 					':difficulty' => $postData['difficulty'],
 					':category' => $postData['category'],
 					':calorie' => $postData['calorie'],
 					':ingredients' => $postData['ingredients'],
-					':leiras' => $postData['leiras']
+					':directions' => $postData['directions']
 				];
 				require_once DATABASE_CONTROLLER;
 				if(!executeDML($query, $params)) {
@@ -43,6 +43,13 @@
 			<div class="form-group col-md-6">
 				<label for="recipeDishName">Dish Name</label>
 				<input type="text" class="form-control" id="recipeDishName" name="dish_name">
+			</div>
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="recipeDescription">Description</label>
+				<textarea type="text" placeholder="Please say something about it!" class="form-control" id="recipeDescription" name="description" rows="3"></textarea>
 			</div>
 		</div>
 
@@ -87,14 +94,14 @@
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="recipeIngredients">Ingredients</label>
-				<textarea type="text" placeholder="Ide írja a hozzávalókat!" class="form-control" id="recipeIngredients" name="ingredients" rows="5"></textarea>
+				<textarea type="text" placeholder="Please write the ingredients here!" class="form-control" id="recipeIngredients" name="ingredients" rows="6"></textarea>
 			</div>
 		</div>
 
 		<div class="form-row">
 			<div class="form-group col-md-12">
-				<label for="recipeLeiras">Elkészítés</label>
-				<textarea type="text" placeholder="Ide írja az elkészítést" class="form-control" id="recipeLeiras" name="leiras" rows="5"></textarea>
+				<label for="recipeDirections">Directions</label>
+				<textarea type="text" placeholder="Please write the instuctions here!" class="form-control" id="recipeDirections" name="directions" rows="10"></textarea>
 			</div>
 		</div>
 
