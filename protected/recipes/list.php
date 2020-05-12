@@ -15,52 +15,34 @@
 		}
 	?>
 
-	<?php if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addRecipe'])){
-			$postData = [
-				'dish_name' => $_POST['dish_name'],
-				'difficulty' => $_POST['difficulty'],
-				'category' => $_POST['category'],
-				'calorie' => $_POST['calorie'],
-				'ingredients' => $_POST['ingredients'],
-				'directions' => $_POST['directions'],
-				'description' => $_POST['description']
-			];
-	endif;?>
-
-
-
-
-
-
-
-
-
-
-
-	<?php 
-		$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes ORDER BY dish_name ASC";
-		require_once DATABASE_CONTROLLER;
-		$recipes = getList($query);
+	<?php
+		if(isset($_POST['submit']) && $_POST['word'] !== ' ' && !(empty($_POST['word']))){
+			$search = $_POST['word'];
+		
+			$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes WHERE dish_name LIKE '%$search%'";
+			require_once DATABASE_CONTROLLER;
+			$recipes = getList($query);
+		}
+		else{
+			$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes ORDER BY dish_name ASC";
+			require_once DATABASE_CONTROLLER;
+			$recipes = getList($query);
+		}
 	?>
 
 
-
-
-
-
-
-
-
-	<form method="post" style="text-align: center" name=search>
-			<input type="text" name='word'>
-			<input type="submit" value="Keresés">
+	<form method="post" style="text-align: center">
+		<input type="text" name='word'>
+		<input type="submit" value="search" name="submit">
 	</form>
 
+		<hr style="width: 75%">
 
-	<hr style="width: 75%">
+
 	<?php if(count($recipes) <= 0) : ?>
 		<h1>No recipes found in the database.</h1>
 	<?php else : ?>
+
 		<table class="table table-striped">
 			<thead>
 				<tr>
