@@ -4,6 +4,21 @@ body {
 	font-size: 18px;
 }
 
+img {
+    max-width: 100%;
+    display:block;
+    height:auto;
+}
+
+table{
+	width: 100%;
+	table-layout: fixed;
+}
+
+table > img {
+	max-width: 100%;
+}
+
 pre{
 	font-family: "Times New Roman";
 	font-size: 18px;
