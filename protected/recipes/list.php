@@ -16,7 +16,14 @@
 	?>
 
 	<?php
-		if(isset($_POST['submit']) && $_POST['word'] !== ' ' && !(empty($_POST['word']))){
+		if(array_key_exists('c', $_GET) && !empty($_GET['c'])){
+			$category = $_GET['c'];
+			echo $category;
+			$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes WHERE category = '$category'";
+			require_once DATABASE_CONTROLLER;
+			$recipes = getList($query);
+		}
+		elseif(isset($_POST['submit']) && $_POST['word'] !== ' ' && !(empty($_POST['word']))){
 			$search = $_POST['word'];
 		
 			$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes WHERE dish_name LIKE '%$search%'";
@@ -24,6 +31,7 @@
 			$recipes = getList($query);
 		}
 		else{
+			echo "Valami";
 			$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes ORDER BY dish_name ASC";
 			require_once DATABASE_CONTROLLER;
 			$recipes = getList($query);
@@ -31,12 +39,29 @@
 	?>
 
 
+
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<th><a href="?P=list_recipe&c=Breakfast"><img border="0" alt="Breakfast" src="Breakfast.jpg"></a></th>
+				<th><a href="?P=list_recipe&c=Soup"><img border="0" alt="Soup" src="Soup.jpg"></a></th>
+				<th><a href="?P=list_recipe&c=Main Course"><img border="0" alt="Main Course" src="Main course2.jpg"></a></th>
+				<th><a href="?P=list_recipe&c=Dessert"><img border="0" alt="Dessert" src="Dessert.jpg"></a></th>
+			</tr>
+			<tr>
+				<th><a href="?P=list_recipe&c=Salad"><img border="0" alt="Salad" src="Salad.jpg"></a></th>
+				<th><a href="?P=list_recipe&c=Drinks"><img border="0" alt="Drinks" src="Drinks.jpg"></a></th>
+				<th><a href="?P=list_recipe&c=Dinner"><img border="0" alt="Dinner" src="Dinner.jpg"></a></th>
+				<th><a href="?P=list_recipe&c=Garnish"><img border="0" alt="Garnish" src="Garnish.jpg"></a></th>
+			</tr>
+		</tbody>
+	</table>
+	
 	<form method="post" style="text-align: center">
 		<input type="text" name='word'>
 		<input type="submit" value="search" name="submit">
 	</form>
-
-		<hr style="width: 75%">
+	<hr style="width: 75%">
 
 
 	<?php if(count($recipes) <= 0) : ?>
@@ -46,15 +71,15 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th scope="col">#</th>
+					<th scope="col" width=10%>#</th>
 					<th scope="col">Dish name</th>
-					<th scope="col">Difficulty</th>
-					<th scope="col">Category</th>
-					<th scope="col">Calorie</th>
+					<th scope="col" width=15%>Difficulty</th>
+					<th scope="col" width=20%>Category</th>
+					<th scope="col" width=15%>Calorie</th>
 					<?php if($_SESSION['permission'] >= 2) : ?>
-						<th scope="col">Szerkesztés</th>
+						<th scope="col" width=10%>Szerkesztés</th>
 						<?php if($_SESSION['permission'] >=3) : ?>
-							<th scope="col">Törlés</th>
+							<th scope="col" width=10%>Törlés</th>
 						<?php endif; ?>
 					<?php endif; ?>
 				<tr>
