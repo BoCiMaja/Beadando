@@ -54,7 +54,7 @@
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="recipeDescription">Description</label>
-					<textarea type="text" placeholder="Please say something about it!" class="form-control" id="recipeDescription" name="description" rows="3"  value = "<?=$r['description']?>"></textarea>
+					<textarea type="text" placeholder="Please say something about it!" class="form-control" id="recipeDescription" name="description" rows="3"><?=$r['description']?></textarea>
 				</div>
 			</div>
 
@@ -122,14 +122,14 @@
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="recipeIngredients">Ingredients</label>
-					<textarea type="text" placeholder="Please write the ingredients here! Please split the lines with ENTER!" class="form-control" id="recipeIngredients" name="ingredients" rows="6" text = "<?=$r['ingredients']?>"></textarea>
+					<textarea type="text" placeholder="Please write the ingredients here! Please split the lines with ENTER!" class="form-control" id="recipeIngredients" name="ingredients" rows="8"><?=$r['ingredients']?></textarea>
 				</div>
 			</div>
 
 			<div class="form-row">
 				<div class="form-group col-md-12">
 					<label for="recipeDirections">Directions</label>
-					<textarea type="text" placeholder="Please write the instuctions here! Please split the lines with ENTER!" class="form-control" id="recipeDirections" name="directions" rows="10" value = "<?=$r['directions']?>"></textarea>
+					<textarea type="text" placeholder="Please write the instuctions here! Please split the lines with ENTER!" class="form-control" id="recipeDirections" name="directions" rows="10"><?=$r['directions']?></textarea>
 				</div>
 			</div>
 
