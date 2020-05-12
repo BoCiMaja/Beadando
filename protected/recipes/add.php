@@ -10,22 +10,24 @@
 				'category' => $_POST['category'],
 				'calorie' => $_POST['calorie'],
 				'ingredients' => $_POST['ingredients'],
-				'directions' => $_POST['directions']
+				'directions' => $_POST['directions'],
+				'description' => $_POST['description']
 			];
 
 
 
-			if(empty($postData['dish_name']) || empty($postData['difficulty']) || empty($postData['category']) || empty($postData['calorie']) || empty($postData['ingredients']) || empty($postData['directions'])){
+			if(empty($postData['dish_name']) || empty($postData['difficulty']) || empty($postData['category']) || empty($postData['calorie']) || empty($postData['ingredients']) || empty($postData['directions']) || empty($postData['description'])){
 				echo "Hiányzó adat(ok)";
 			} else {
-				$query = "INSERT INTO recipes (dish_name, difficulty, category, calorie, ingredients, directions) VALUES (:dish_name, :difficulty, :category, :calorie, :ingredients, :directions)";
+				$query = "INSERT INTO recipes (dish_name, difficulty, category, calorie, ingredients, directions, description) VALUES (:dish_name, :difficulty, :category, :calorie, :ingredients, :directions, :description)";
 				$params = [
 					':dish_name' => $postData['dish_name'],
 					':difficulty' => $postData['difficulty'],
 					':category' => $postData['category'],
 					':calorie' => $postData['calorie'],
 					':ingredients' => $postData['ingredients'],
-					':directions' => $postData['directions']
+					':directions' => $postData['directions'],
+					':description' => $postData['description']
 				];
 				require_once DATABASE_CONTROLLER;
 				if(!executeDML($query, $params)) {
@@ -94,14 +96,14 @@
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="recipeIngredients">Ingredients</label>
-				<textarea type="text" placeholder="Please write the ingredients here!" class="form-control" id="recipeIngredients" name="ingredients" rows="6"></textarea>
+				<textarea type="text" placeholder="Please write the ingredients here! Please split the lines with ENTER!" class="form-control" id="recipeIngredients" name="ingredients" rows="6"></textarea>
 			</div>
 		</div>
 
 		<div class="form-row">
 			<div class="form-group col-md-12">
 				<label for="recipeDirections">Directions</label>
-				<textarea type="text" placeholder="Please write the instuctions here!" class="form-control" id="recipeDirections" name="directions" rows="10"></textarea>
+				<textarea type="text" placeholder="Please write the instuctions here! Please split the lines with ENTER!" class="form-control" id="recipeDirections" name="directions" rows="10"></textarea>
 			</div>
 		</div>
 
