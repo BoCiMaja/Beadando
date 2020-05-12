@@ -14,11 +14,11 @@
 		<?=$r['description']?> <br>
 		<?= $r['difficulty'] == 1 ? 'Very Easy' : ($r['difficulty'] == 2 ? 'Easy' : ($r['difficulty'] == 3 ? 'Medium' : ($r['difficulty'] == 4 ? 'Hard' : 'Very Hard')));?> | <?=$r['calorie']?> kcal
 		<hr style="width: 75%">
-		<h5>Ingredients</h5>
-		<?=$r['ingredients']?>
+		<h4>Ingredients</h4>
+		<pre><?=$r['ingredients']?></pre>
 		<hr style="width: 75%">
-		<h5>Direction</h5>
-		<?=$r['directions']?>
+		<h4>Direction</h4>
+		<pre><?=$r['directions']?></pre>
 	<?php endforeach; ?>
 
 <?php endif; ?>
