@@ -96,7 +96,7 @@
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="recipeIngredients">Ingredients</label>
-				<textarea type="text" placeholder="Please write the ingredients here! Please split the lines with ENTER!" class="form-control" id="recipeIngredients" name="ingredients" rows="6"></textarea>
+				<textarea type="text" placeholder="Please write the ingredients here! Please split the lines with ENTER!" class="form-control" id="recipeIngredients" name="ingredients" rows="8"></textarea>
 			</div>
 		</div>
 
