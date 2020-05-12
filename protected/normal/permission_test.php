@@ -12,10 +12,10 @@
 			echo "Tud böngészni receptek között és hozzáadni egy  újat.";
 			break;
 		case '2':
-			echo "Tud böngészni receptek között és hozzáadni egy újat. Valamint tudja szerkeszteni a felhasználók adatait és törölni tudja őket.";
+			echo "Tud böngészni receptek között, hozzáadni egy újat, valamint tudja szerkeszteni tudja az adatait.";
 			break;
 		default:
-			echo "Tud böngészni receptek között és hozzáadni egy újat. Valamint tudja szerkeszteni a felhasználók adatait és törölni tudja őket.";
+			echo "Tud böngészni receptek között, hozzáadni egy újat és szerkeszteni az adatait. Valamint tudja szerkeszteni a felhasználók adatait és törölni tudja őket.";
 			break;
 	} ?>
 <?php endif; ?>
