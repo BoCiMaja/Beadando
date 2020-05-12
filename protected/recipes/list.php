@@ -34,8 +34,10 @@
 						<td><?=$r['difficulty'] ?></td>
 						<td><?=$r['category'] ?></td>
 						<td><?=$r['calorie'] ?></td>
-						<td><a href="<?='index.php?P=edit_recipe&e='.$r['id']?>">Edit</a></td>
-						<td><a href="?P=list_recipe&d=<?=$r['id'] ?>">Delete</a></td>
+						<?php if($_SESSION['permission'] >= 2) : ?>
+							<td><a href="<?='index.php?P=edit_recipe&e='.$r['id']?>">Edit</a></td>
+							<td><a href="?P=list_recipe&d=<?=$r['id'] ?>">Delete</a></td>
+						<?php endif; ?>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
