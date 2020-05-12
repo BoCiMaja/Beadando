@@ -1,4 +1,4 @@
-<?php if(!isset($_SESSION['permission']) || $_SESSION['permission'] <= 0) : ?>
+<?php if(!isset($_SESSION['permission']) || $_SESSION['permission'] < 0) : ?>
 	<h1>Page access is forbidden!</h1>
 <?php else : ?>
 	<?php 
