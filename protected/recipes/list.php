@@ -1,6 +1,20 @@
 <?php if(!isset($_SESSION['permission'])): ?>
 	<h1>Page access is forbidden!</h1>
 <?php else : ?>
+
+	<?php 
+		if(array_key_exists('d', $_GET) && !empty($_GET['d'])) {
+			$query = "DELETE FROM recipes WHERE id = :id";
+			$params = [':id' => $_GET['d']];
+			require_once DATABASE_CONTROLLER;
+			if($_SESSION['permission'] < 3){
+				echo "Access is forbidden";
+			} else if(!executeDML($query, $params)) {
+				echo "Error during deleting recipe!";
+			}
+		}
+	?>
+
 	<?php 
 		$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes ORDER BY dish_name ASC";
 		require_once DATABASE_CONTROLLER;
@@ -20,7 +34,9 @@
 					<th scope="col">Calorie</th>
 					<?php if($_SESSION['permission'] >= 2) : ?>
 						<th scope="col">Szerkesztés</th>
-						<th scope="col">Törlés</th>
+						<?php if($_SESSION['permission'] >=3) : ?>
+							<th scope="col">Törlés</th>
+						<?php endif; ?>
 					<?php endif; ?>
 				<tr>
 			</thead>
@@ -31,12 +47,14 @@
 					<tr>
 						<th scope="row"><?=$i ?></th>
 						<td><a href="<?='index.php?P=recipe&id='.$r['id']?>"><?=$r['dish_name'] ?></a></td>
-						<td><?=$r['difficulty'] ?></td>
+						<td><?= $r['difficulty'] == 1 ? 'Very Easy' : ($r['difficulty'] == 2 ? 'Easy' : ($r['difficulty'] == 3 ? 'Medium' : ($r['difficulty'] == 4 ? 'Hard' : 'Very Hard')));?></td>
 						<td><?=$r['category'] ?></td>
 						<td><?=$r['calorie'] ?></td>
 						<?php if($_SESSION['permission'] >= 2) : ?>
 							<td><a href="<?='index.php?P=edit_recipe&e='.$r['id']?>">Edit</a></td>
-							<td><a href="?P=list_recipe&d=<?=$r['id'] ?>">Delete</a></td>
+							<?php if($_SESSION['permission'] >=3) : ?>
+								<td><a href="?P=list_recipe&d=<?=$r['id'] ?>">Delete</a></td>
+							<?php endif; ?>
 						<?php endif; ?>
 					</tr>
 				<?php endforeach; ?>
