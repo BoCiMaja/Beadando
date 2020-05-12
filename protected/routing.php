@@ -11,6 +11,7 @@ if(!array_key_exists('P', $_GET) || empty($_GET['P']))
 		case 'list_recipe': isUserLoggedIn() ? require_once PROTECTED_DIR.'recipes/list.php' : header('Location: index.php'); break;
 		case 'add_recipe': isUserLoggedIn() ? require_once PROTECTED_DIR.'recipes/add.php' : header('Location: index.php'); break;
 		case 'recipe': isUserLoggedIn() ? require_once PROTECTED_DIR.'recipes/recipe.php' : header('Location: index.php'); break;
+		case 'edit_recipe': isUserLoggedIn() ? require_once PROTECTED_DIR.'recipes/edit.php' : header('Location: index.php'); break;
 
 
 
