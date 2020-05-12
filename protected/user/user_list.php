@@ -1,4 +1,4 @@
-<?php if(!isset($_SESSION['permission']) || $_SESSION['permission'] < 1) : ?>
+<?php if(!isset($_SESSION['permission']) || $_SESSION['permission'] < 2) : ?>
 	<h1>Page access is forbidden!</h1>
 <?php else : ?>
 
@@ -9,18 +9,20 @@
 			require_once DATABASE_CONTROLLER;
 			if($_GET['d'] == $_SESSION['uid']){
 				echo "You can't delete yourself in here!";
+			} else if($_SESSION['permission'] < 3){
+				echo "Access is forbidden";
 			} else if(!executeDML($query, $params)) {
 				echo "Error during deleting user!";
 			}
-			
 		}
 	?>
 
 	<?php 
-	$query = "SELECT id, first_name, last_name, email, permission FROM users";
-	require_once DATABASE_CONTROLLER;
-	$users = getList($query);
+		$query = "SELECT id, first_name, last_name, email, permission FROM users";
+		require_once DATABASE_CONTROLLER;
+		$users = getList($query);
 	?>
+
 	<?php if(count($users) <= 0) : ?>
 		<h1>No users found in the database.</h1>
 	<?php else : ?>
