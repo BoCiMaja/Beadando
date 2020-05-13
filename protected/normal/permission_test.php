@@ -6,16 +6,16 @@
 	<p>Your permission level is <?=$_SESSION['permission'] ?></p>
 	<?php switch ($_SESSION['permission']) {
 		case '0':
-			echo "Tud böngészni receptek között.";
+			echo "You can search between recipes.";
 			break;
 		case '1':
-			echo "Tud böngészni receptek között és hozzáadni egy  újat.";
+			echo "You can search between and add new recipes.";
 			break;
 		case '2':
-			echo "Tud böngészni receptek között, hozzáadni egy újat, valamint tudja szerkeszteni tudja az adatait.";
+			echo "You can search between, add new and edit the recipes.";
 			break;
 		default:
-			echo "Tud böngészni receptek között, hozzáadni egy újat és szerkeszteni az adatait. Valamint tudja szerkeszteni a felhasználók adatait és törölni tudja őket.";
+			echo "You can search between, add new and edit the recipes. Also you can edit and remove the data of the users.";
 			break;
 	} ?>
 <?php endif; ?>
