@@ -16,12 +16,23 @@
 	?>
 
 	<?php
+
 		if(array_key_exists('c', $_GET) && !empty($_GET['c'])){
 			$category = $_GET['c'];
-			echo $category;
-			$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes WHERE category = '$category'";
-			require_once DATABASE_CONTROLLER;
-			$recipes = getList($query);
+
+			if(isset($_POST['submit']) && $_POST['word'] !== ' ' && !(empty($_POST['word']))){
+				$search = $_POST['word'];
+
+				$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes WHERE (dish_name LIKE '%$search%' AND category = '$category')";
+				require_once DATABASE_CONTROLLER;
+				$recipes = getList($query);
+			}
+			else
+			{
+				$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes WHERE category = '$category'";
+				require_once DATABASE_CONTROLLER;
+				$recipes = getList($query);
+			}
 		}
 		elseif(isset($_POST['submit']) && $_POST['word'] !== ' ' && !(empty($_POST['word']))){
 			$search = $_POST['word'];
@@ -30,8 +41,8 @@
 			require_once DATABASE_CONTROLLER;
 			$recipes = getList($query);
 		}
-		else{
-			echo "Valami";
+		else
+		{
 			$query = "SELECT id, dish_name, difficulty, category, calorie FROM recipes ORDER BY dish_name ASC";
 			require_once DATABASE_CONTROLLER;
 			$recipes = getList($query);
@@ -59,7 +70,7 @@
 	
 	<form method="post" style="text-align: center">
 		<input type="text" name='word'>
-		<input type="submit" value="search" name="submit">
+		<input type="submit" value="Search" name="submit">
 	</form>
 	<hr style="width: 75%">
 
