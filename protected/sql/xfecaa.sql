@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3308
--- Létrehozás ideje: 2020. Máj 13. 21:44
+-- Létrehozás ideje: 2020. Máj 14. 09:55
 -- Kiszolgáló verziója: 8.0.18
 -- PHP verzió: 7.3.12
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `xfecaa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `bugs`
+--
+
+DROP TABLE IF EXISTS `bugs`;
+CREATE TABLE IF NOT EXISTS `bugs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(250) DEFAULT NULL,
+  `description` varchar(1000) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `bugs`
+--
+
+INSERT INTO `bugs` (`id`, `email`, `description`) VALUES
+(1, 'bmshiiba@gmail.com', 'A beállított kategória hiba esetén nem marad meg!');
 
 -- --------------------------------------------------------
 
