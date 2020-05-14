@@ -44,21 +44,21 @@
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="recipeDishName">Dish Name</label>
-				<input type="text" class="form-control" id="recipeDishName" name="dish_name">
+				<input type="text" class="form-control" id="recipeDishName" name="dish_name" value = "<?=isset($postData) ? $postData['dish_name'] : "";?>">
 			</div>
 		</div>
 
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="recipeDescription">Description</label>
-				<textarea type="text" placeholder="Please say something about it!" class="form-control" id="recipeDescription" name="description" rows="3"></textarea>
+				<textarea type="text" placeholder="Please say something about it!" class="form-control" id="recipeDescription" name="description" rows="3" value = "<?=isset($postData) ? $postData['description'] : "";?>"></textarea>
 			</div>
 		</div>
 
 		<div class="form-row">
 			<div class="form-group col-md-6">
 		    	<label for="recipeDifficulty">Difficulty</label>
-		    	<select class="form-control" id="recipeDifficulty" name="difficulty">
+		    	<select class="form-control" id="recipeDifficulty" name="difficulty" value = "<?=isset($postData) ? $postData['difficulty'] : "";?>">
 		    		<option value="0">There is nothing here</option>
 		      		<option value="1">Very easy</option>
 		      		<option value="2">Easy</option>
@@ -72,7 +72,7 @@
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="recipeCategory">Category</label>
-				<select class="form-control" id="recipeCategory" name="category">
+				<select class="form-control" id="recipeCategory" name="category" value = "<?=isset($postData) ? $postData['category'] : "";?>">
 					<option value="0">There is nothing here</option>
 		      		<option value="Breakfast">Breakfast</option>
 		      		<option value="Soup">Soup</option>
@@ -89,21 +89,21 @@
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="recipeCalorie">Calorie</label>
-				<input type="text" class="form-control" id="recipeCalorie" name="calorie">
+				<input type="text" class="form-control" id="recipeCalorie" name="calorie" value = "<?=isset($postData) ? $postData['calorie'] : "";?>">
 			</div>
 		</div>
 
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="recipeIngredients">Ingredients</label>
-				<textarea type="text" placeholder="Please write the ingredients here! Please split the lines with ENTER!" class="form-control" id="recipeIngredients" name="ingredients" rows="8"></textarea>
+				<textarea type="text" placeholder="Please write the ingredients here! Please split the lines with ENTER!" class="form-control" id="recipeIngredients" name="ingredients" rows="8" value = "<?=isset($postData) ? $postData['ingredients'] : "";?>"></textarea>
 			</div>
 		</div>
 
 		<div class="form-row">
 			<div class="form-group col-md-12">
 				<label for="recipeDirections">Directions</label>
-				<textarea type="text" placeholder="Please write the instuctions here! Please split the lines with ENTER!" class="form-control" id="recipeDirections" name="directions" rows="10"></textarea>
+				<textarea type="text" placeholder="Please write the instuctions here! Please split the lines with ENTER!" class="form-control" id="recipeDirections" name="directions" rows="10" value = "<?=isset($postData) ? $postData['directions'] : "";?>"></textarea>
 			</div>
 		</div>
 
