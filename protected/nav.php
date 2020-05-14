@@ -1,6 +1,8 @@
 <hr>
 
 <a href="index.php">Home</a>
+<span> &nbsp; | &nbsp; </span>
+<a href="index.php?P=bug_report">Report a bug</a>
 <?php if(!IsUserLoggedIn()) : ?>
 	<span> &nbsp; | &nbsp; </span>
 	<a href="index.php?P=login">Login</a>
@@ -14,7 +16,7 @@
 
 	<?php if(isset($_SESSION['permission']) && $_SESSION['permission'] >= 1) : ?>
 		<span> &nbsp; | &nbsp; </span>
-		<a href="index.php?P=add_recipe">Add recipe</a>
+		<a href="index.php?P=add_recipe">Add a recipe</a>
 		<?php if(isset($_SESSION['permission']) && $_SESSION['permission'] > 1) : ?>
 			<span> &nbsp; | &nbsp; </span>
 			<a href="index.php?P=users">User list</a>
